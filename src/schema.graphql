@@ -12,15 +12,31 @@ type Query {
   index: String!
   books: [Book!]!
   findBookById(id: Int!): Book
+  booksDB: [Book!]!
+  findBookByIdDB(id: Int!): Book
 }
 
 type Mutation {
-  deleteBook(id: Int!): Book!
-  addBook(addBookArgs: AddBookArgs!): Book!
-  updateBook(id: Int!, updateBookArgs: AddBookArgs!): Book!
+  deleteBook(id: Int!): String!
+  addBook(addBookArgs: AddBookArgs!): String!
+  updateBook(id: Int!, updateBookArgs: AddBookArgs!): String!
+  deleteBookDB(id: Int!): String!
+  addBookDB(addBookArgs: AddBookArgsDB!): String!
+  updateBookDB(updateBookArgs: UpdateBookArgsDB!): String!
 }
 
 input AddBookArgs {
+  id: Int!
+  title: String!
+  price: Int!
+}
+
+input AddBookArgsDB {
+  title: String!
+  price: Int!
+}
+
+input UpdateBookArgsDB {
   id: Int!
   title: String!
   price: Int!
